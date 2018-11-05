@@ -1,0 +1,11 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+
+    FH\Bundle\MultiSiteBundle\Request\CurrentSiteListener:
+        tags:
+            # must be executed before routing (priority 32) is executed
+            - { name: 'kernel.event_listener', event: 'kernel.request', priority: 50 }
+
+    FH\Bundle\MultiSiteBundle\Twig\CurrentSiteExtension: ~

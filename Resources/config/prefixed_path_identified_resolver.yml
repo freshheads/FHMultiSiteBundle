@@ -1,0 +1,19 @@
+parameters:
+    fh_multi_site.prefixed_path_identified_resolver.identifiers: []
+    fh_multi_site.prefixed_path_identified_resolver.default_identifier: ~
+    fh_multi_site.prefixed_path_identified_resolver.route_parameter: ~
+
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+
+    FH\Bundle\MultiSiteBundle\Site\PrefixedPathIdentifiedSiteResolver:
+        arguments:
+            $identifiers: '%fh_multi_site.prefixed_path_identified_resolver.identifiers%'
+            $defaultIdentifier: '%fh_multi_site.prefixed_path_identified_resolver.default_identifier%'
+
+    FH\Bundle\MultiSiteBundle\Router\PathIdentifiedUrlGenerator:
+        arguments:
+            $routeParameter: '%fh_multi_site.prefixed_path_identified_resolver.route_parameter%'
+            $defaultIdentifier: '%fh_multi_site.prefixed_path_identified_resolver.default_identifier%'

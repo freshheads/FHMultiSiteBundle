@@ -1,0 +1,19 @@
+parameters:
+    fh_multi_site.hostname_identified_resolver.identifier_mapping: ~
+
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+
+    FH\Bundle\MultiSiteBundle\Router\HostnameIdentifiedLoader:
+        tags:
+            - { name: 'routing.loader', priority: 100 }
+
+    FH\Bundle\MultiSiteBundle\Router\HostnameIdentifiedUrlGenerator: ~
+
+    FH\Bundle\MultiSiteBundle\Site\HostnameIdentifiedSiteResolver: ~
+
+    FH\Bundle\MultiSiteBundle\Site\IdentifierMapping:
+        arguments:
+            $mapping: '%fh_multi_site.hostname_identified_resolver.identifier_mapping%'

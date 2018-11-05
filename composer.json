@@ -1,0 +1,58 @@
+{
+    "name": "freshheads/multi-site-bundle",
+    "license": "MIT",
+    "type": "symfony-bundle",
+    "description": "A Symfony bundle that provides site configuration and routing strategies for applications with multiple (sub)sites",
+    "keywords": [
+        "site",
+        "multi site",
+        "subsite",
+        "routing"
+    ],
+    "homepage": "https://github.com/freshheads/FHMultiSiteBundle",
+    "authors": [
+        {
+            "name": "Bart van Amelsvoort",
+            "email": "bart.van.amelsvoort@freshheads.com"
+        },
+        {
+            "name": "Kevin Schuurmans",
+            "email": "kevin.schuurmans@freshheads.com"
+        },
+        {
+            "name": "Joris van de Sande",
+            "email": "joris.van.de.sande@freshheads.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.1",
+        "symfony/config": "^3.4 || ^4.0",
+        "symfony/dependency-injection": "^3.4 || ^4.0",
+        "symfony/event-dispatcher": "^3.4 || ^4.0",
+        "symfony/http-kernel": "^3.4 || ^4.0",
+        "symfony/routing": "^3.4 || ^4.0",
+        "symfony/yaml": "^3.4 || ^4.0"
+    },
+    "require-dev": {
+        "symfony/doctrine-bridge": "^3.4 || ^4.0",
+        "symfony/form": "^3.4 || ^4.0",
+        "symfony/phpunit-bridge": "*",
+        "twig/twig": "^2.0"
+    },
+    "suggest": {
+        "symfony/form": "required when using one of the form types",
+        "twig/twig": "required when using the twig functions",
+        "symfony/doctrine-bridge": "required when using the IdentifiedSiteType form type"
+    },
+    "autoload": {
+        "psr-4": { "FH\\Bundle\\MultiSiteBundle\\": "" }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-develop": "1.x-dev"
+        }
+    },
+    "config": {
+        "sort-packages": true
+    }
+}

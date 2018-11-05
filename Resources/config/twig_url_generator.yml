@@ -1,0 +1,8 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+
+    FH\Bundle\MultiSiteBundle\Twig\UrlGeneratorExtension:
+        arguments:
+            - '@fh_multi_site.resolver.url_generator'
