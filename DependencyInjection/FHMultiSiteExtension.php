@@ -34,7 +34,7 @@ class FHMultiSiteExtension extends Extension
             $loader->load('resolver.yml');
             $this->configureResolver($config['resolver'], $container, $loader);
 
-            if (in_array($config['resolver'], ['hostname_identified', 'prefixed_path_identified'])) {
+            if (in_array($config['resolver']['type'], ['hostname_identified', 'prefixed_path_identified'])) {
                 $loader->load('twig_url_generator.yml');
             }
         }
