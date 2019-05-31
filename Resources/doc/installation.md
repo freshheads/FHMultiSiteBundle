@@ -1,74 +1,31 @@
-Installation
-============
+# Bundle installation
 
-1. Install the FHMultiSiteBundle and it's dependencies:
-    ```bash
-    composer require freshheads/multi-site-bundle
-    ```
+Require the bundle as a dependency.
 
-2. Add the bundle and its dependencies (if not already present) to `config/bundles.php`:
-   ```php
-   $bundles = [
-       // ...
-       new FH\Bundle\MultiSiteBundle\FHMultiSiteBundle(),
-       // ...
-   ];
-   ```
+```bash
+$ composer require freshheads/multi-site-bundle
+```
 
+Enable it in your application Kernel.
 
-Model setup
------------
-
-Create entity class mapping config and repository in your application (for ORM):
-
-``` php
+```php
 <?php
-// src/FH/Bundle/AppBundle/Entity/Site.php
-declare(strict_types=1);
-
-namespace App\Domain\Model\Site;
-
-use FH\Bundle\MultiSiteBundle\Site\SiteInterface;
-
-class Site implements SiteInterface
-{
-}
+// config/bundles.php
+return [
+    //...
+    FH\Bundle\MultiSiteBundle\FHMultiSiteBundle::class => ['all' => true],
+];
 ```
 
-``` yaml
-# config/doctrine/domain/site/Site.orm.yml
+## Minimal configuration
 
-App\Domain\Model\Site:
-    type: entity
-    table: site
-```
-
-``` php
-<?php
-// src/App/Infrastructure/Model/Site/Repository/SiteRepository.php
-declare(strict_types=1);
-
-namespace App\Infrastructure\Model\Site\Repository;
-
-use FH\Bundle\MultiSiteBundle\Site\SiteInterface;use FH\Bundle\MultiSiteBundle\Site\SiteRepositoryInterface;
-
-final class SiteRepository implements SiteRepositoryInterface
-{
-    /**
-     * @return SiteInterface[]
-     */
-    public function findAll() : array
-    {
-        // TODO: Implement findAll() method.
-    }
-}
-```
+You must implement `SiteRepositoryInterface` and add it's service id to `fh_multi_site` config.
 
 ``` yaml
 # config/packages/fh_multi_site.yaml
 
 fh_multi_site:
-    repository: 'App/Infrastructure/Model/Site/Repository/SiteRepository'
+    repository: ~
 ```
 
-Now the bundle is ready to use!
+See the [Site](site.md) documentation for more details.
