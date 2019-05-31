@@ -1,7 +1,7 @@
 # Site model
 
 The main interface to implement is `SiteInterface`, which is an empty interface.
-To use any of the build-in [resolvers](site_resolver.md), `IdentifiedSiteInterface` have to be implemented.
+To use any of the build-in [resolvers](site_resolver.md), `IdentifiedSiteInterface` has to be implemented.
 
 ```php
 <?php
@@ -17,7 +17,7 @@ interface IdentifiedSiteInterface extends SiteInterface
 There is no build-in repository or list of sites, this is something that is part of your application.
 As long as you have a model that implements `SiteInterface`, you can use this bundle.
 
-Example of a model:
+Example of a concrete site model:
 
 ```php
 <?php
