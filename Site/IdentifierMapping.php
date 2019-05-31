@@ -40,6 +40,7 @@ final class IdentifierMapping
 
     /**
      * @param string $identifier
+     * @param string|null $locale
      * @return string[]
      */
     public function findHostnamesByIdentifier(string $identifier, string $locale = null): array
