@@ -1,7 +1,7 @@
 FHMultiSiteBundle
 =================
 
-[![Build status][develop build status]][develop branch]  [![Coverage Status][develop build coverage]][develop coverage]
+[![Build status][develop build status]][develop branch]  [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/freshheads/FHMultiSiteBundle/badges/quality-score.png?b=develop)](https://scrutinizer-ci.com/g/freshheads/FHMultiSiteBundle/?branch=develop)
 
 A Symfony bundle that provides site configuration and routing strategies for applications with multiple (sub)sites.
 
