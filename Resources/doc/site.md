@@ -70,7 +70,7 @@ interface SiteRepositoryInterface
 }
 ```
 
-It is up to you have to implement this service.
+It is up to you how to implement this service:
 - You can load the sites from code
 - You can link it to Doctrine, to fetch the sites from a database
 - ...
