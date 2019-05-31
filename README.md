@@ -1,7 +1,7 @@
 FHMultiSiteBundle
 =================
 
-[![Build Status](https://travis-ci.org/freshheads/FHMultiSiteBundle.svg?branch=develop)](https://travis-ci.org/freshheads/FHMultiSiteBundle)
+[![Build status][develop build status]][develop branch]  [![Coverage Status][develop build coverage]][develop coverage]
 
 A Symfony bundle that provides site configuration and routing strategies for applications with multiple (sub)sites.
 
@@ -14,3 +14,8 @@ Documentation
 - [Routing](Resources/doc/routing.md)
 - [Form types](Resources/doc/form_types.md)
 - [Twig extensions](Resources/doc/twig_extensions.md)
+
+    [develop branch]: https://github.com/freshheads/FHMultiSiteBundle/tree/develop
+    [develop build status]: https://travis-ci.org/freshheads/FHMultiSiteBundle.svg?branch=develop
+    [develop coverage]: https://scrutinizer-ci.com/g/freshheads/FHMultiSiteBundle/?branch=develop
+    [develop build coverage]: https://img.shields.io/scrutinizer/coverage/g/freshheads/FHMultiSiteBundle/develop.svg?style=flat-square
