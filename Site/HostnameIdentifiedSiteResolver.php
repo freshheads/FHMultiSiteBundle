@@ -13,7 +13,7 @@ final class HostnameIdentifiedSiteResolver implements SiteResolverInterface
     private $siteRepository;
     private $identifierMapping;
 
-    public function __construct(SiteRepositoryInterface $siteRepository, IdentifierMapping $identifierMapping)
+    public function __construct(SiteRepositoryInterface $siteRepository, IdentifierMappingInterface $identifierMapping)
     {
         $this->siteRepository = $siteRepository;
         $this->identifierMapping = $identifierMapping;

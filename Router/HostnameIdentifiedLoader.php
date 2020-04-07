@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace FH\Bundle\MultiSiteBundle\Router;
 
-use FH\Bundle\MultiSiteBundle\Site\IdentifierMapping;
+use FH\Bundle\MultiSiteBundle\Site\IdentifierMappingInterface;
 use Symfony\Component\Config\Loader\Loader;
 use Symfony\Component\Routing\Route;
 use Symfony\Component\Routing\RouteCollection;
@@ -23,7 +23,7 @@ final class HostnameIdentifiedLoader extends Loader
 
     private $identifierMapping;
 
-    public function __construct(IdentifierMapping $identifierMapping)
+    public function __construct(IdentifierMappingInterface $identifierMapping)
     {
         $this->identifierMapping = $identifierMapping;
     }
