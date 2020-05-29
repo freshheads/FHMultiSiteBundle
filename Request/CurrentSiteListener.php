@@ -20,7 +20,7 @@ final class CurrentSiteListener
         $this->siteResolver = $siteResolver;
     }
 
-    public function __invoke(GetResponseEvent $event): void
+    public function __invoke(RequestEvent $event): void
     {
         if (HttpKernelInterface::MASTER_REQUEST !== $event->getRequestType()) {
             return;

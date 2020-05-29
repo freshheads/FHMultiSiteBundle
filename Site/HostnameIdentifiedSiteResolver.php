@@ -19,6 +19,9 @@ final class HostnameIdentifiedSiteResolver implements SiteResolverInterface
         $this->identifierMapping = $identifierMapping;
     }
 
+    /**
+     * @throws SiteNotFoundException
+     */
     public function resolve(RequestContext $requestContext): SiteInterface
     {
         $identifier = $this->identifierMapping->findIdentifierByHostname($requestContext->getHost());

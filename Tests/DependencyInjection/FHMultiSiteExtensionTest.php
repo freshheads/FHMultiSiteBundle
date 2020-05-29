@@ -21,18 +21,18 @@ final class FHMultiSiteExtensionTest extends TestCase
      */
     private $extension;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->container = new ContainerBuilder();
         $this->extension = new FHMultiSiteExtension();
     }
 
-    public function tearDown()
+    public function tearDown(): void
     {
         unset($this->container, $this->extension);
     }
 
-    public function testExtensionRequiresARepository()
+    public function testExtensionRequiresARepository(): void
     {
         $this->expectException(InvalidConfigurationException::class);
         $this->expectExceptionMessage('The child node "repository" at path "fh_multi_site" must be configured.');
