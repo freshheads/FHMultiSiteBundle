@@ -18,7 +18,7 @@ use Symfony\Component\DependencyInjection\Loader;
 /**
  * @author Joris van de Sande <joris.van.de.sande@freshheads.com>
  */
-class FHMultiSiteExtension extends Extension
+final class FHMultiSiteExtension extends Extension
 {
     public function load(array $configs, ContainerBuilder $container): void
     {

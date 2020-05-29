@@ -9,7 +9,7 @@ use Symfony\Component\Config\Definition\ConfigurationInterface;
 /**
  * @author Joris van de Sande <joris.van.de.sande@freshheads.com>
  */
-class Configuration implements ConfigurationInterface
+final class Configuration implements ConfigurationInterface
 {
     private const ROOT_NAME = 'fh_multi_site';
 
