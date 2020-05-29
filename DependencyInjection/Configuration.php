@@ -28,7 +28,7 @@ final class Configuration implements ConfigurationInterface
                 ->arrayNode('resolver')
                     ->canBeEnabled()
                     ->beforeNormalization()
-                        ->ifTrue(function (array $config) {
+                        ->ifTrue(static function (array $config) {
                             if (!$config['enabled']) {
                                 return false;
                             }
@@ -37,7 +37,7 @@ final class Configuration implements ConfigurationInterface
                         ->thenInvalid('A "host_mapping" is required for the hostname_identified resolver')
                     ->end()
                     ->beforeNormalization()
-                        ->ifTrue(function (array $config) {
+                        ->ifTrue(static function (array $config) {
                             if (!$config['enabled']) {
                                 return false;
                             }
@@ -47,7 +47,7 @@ final class Configuration implements ConfigurationInterface
                         ->thenInvalid('"identifiers" are required for the prefixed_path_identified resolver')
                     ->end()
                     ->beforeNormalization()
-                        ->ifTrue(function (array $config) {
+                        ->ifTrue(static function (array $config) {
                             if (!$config['enabled']) {
                                 return false;
                             }

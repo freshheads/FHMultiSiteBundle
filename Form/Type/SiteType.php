@@ -21,12 +21,11 @@ final class SiteType extends AbstractType
         $this->siteRepository = $siteRepository;
     }
 
-
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
             'choices' => $this->siteRepository->findAll(),
-            'choice_label' => function (SiteInterface $site = null) {
+            'choice_label' => static function (SiteInterface $site = null) {
                 return (string) $site;
             },
             'choice_value' => 'id'
