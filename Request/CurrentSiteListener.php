@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace FH\Bundle\MultiSiteBundle\Request;
 
 use FH\Bundle\MultiSiteBundle\Site\SiteResolverInterface;
-use Symfony\Component\HttpKernel\Event\GetResponseEvent;
+use Symfony\Component\HttpKernel\Event\RequestEvent;
 use Symfony\Component\HttpKernel\HttpKernelInterface;
 use Symfony\Component\Routing\RequestContext;
 
