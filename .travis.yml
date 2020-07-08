@@ -20,7 +20,6 @@ matrix:
 
         # Test the latest stable release
         - php: 7.2
-        - php: 7.2
         - php: 7.3
         - php: 7.4
           env: COVERAGE=true PHPUNIT_FLAGS="-v --coverage-text"
