@@ -34,7 +34,7 @@ final class IdentifiedSiteType extends AbstractType
         $resolver->setNormalizer('choices', function (Options $options, $value) {
             if ($options['exclude_sites']) {
                 $value = array_filter($value, function (IdentifiedSiteInterface $site) use ($options): bool {
-                    return !in_array($site->getIdentifier(), $options['exclude_sites']);
+                    return !in_array($site->getIdentifier(), $options['exclude_sites'], true);
                 });
             }
 

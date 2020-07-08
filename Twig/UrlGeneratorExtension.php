@@ -12,6 +12,9 @@ use Twig\TwigFunction;
  */
 final class UrlGeneratorExtension extends AbstractExtension
 {
+    /**
+     * @var UrlGeneratorInterface
+     */
     private $urlGenerator;
 
     public function __construct(UrlGeneratorInterface $urlGenerator)

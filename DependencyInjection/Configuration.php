@@ -8,6 +8,7 @@ use Symfony\Component\Config\Definition\ConfigurationInterface;
 
 /**
  * @author Joris van de Sande <joris.van.de.sande@freshheads.com>
+ * @final
  */
 class Configuration implements ConfigurationInterface
 {
@@ -18,13 +19,7 @@ class Configuration implements ConfigurationInterface
     public function getConfigTreeBuilder(): TreeBuilder
     {
         $treeBuilder = new TreeBuilder(self::ROOT_NAME);
-
-        if (method_exists($treeBuilder, 'getRootNode')) {
-            $rootNode = $treeBuilder->getRootNode();
-        } else {
-            // BC layer for symfony/config 4.1 and older
-            $rootNode = $treeBuilder->root(self::ROOT_NAME);
-        }
+        $rootNode = $treeBuilder->getRootNode();
 
         $rootNode
             ->children()
@@ -34,7 +29,7 @@ class Configuration implements ConfigurationInterface
                 ->arrayNode('resolver')
                     ->canBeEnabled()
                     ->beforeNormalization()
-                        ->ifTrue(function (array $config) {
+                        ->ifTrue(static function (array $config) {
                             if (!$config['enabled']) {
                                 return false;
                             }
@@ -43,7 +38,7 @@ class Configuration implements ConfigurationInterface
                         ->thenInvalid('A "host_mapping" is required for the hostname_identified resolver')
                     ->end()
                     ->beforeNormalization()
-                        ->ifTrue(function (array $config) {
+                        ->ifTrue(static function (array $config) {
                             if (!$config['enabled']) {
                                 return false;
                             }
@@ -53,7 +48,7 @@ class Configuration implements ConfigurationInterface
                         ->thenInvalid('"identifiers" are required for the prefixed_path_identified resolver')
                     ->end()
                     ->beforeNormalization()
-                        ->ifTrue(function (array $config) {
+                        ->ifTrue(static function (array $config) {
                             if (!$config['enabled']) {
                                 return false;
                             }

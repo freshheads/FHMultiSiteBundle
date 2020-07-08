@@ -17,6 +17,7 @@ use Symfony\Component\DependencyInjection\Loader;
 
 /**
  * @author Joris van de Sande <joris.van.de.sande@freshheads.com>
+ * @final
  */
 class FHMultiSiteExtension extends Extension
 {
