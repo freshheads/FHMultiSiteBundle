@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace FH\Bundle\MultiSiteBundle\Router;
 
-use FH\Bundle\MultiSiteBundle\Site\IdentifierMapping;
+use FH\Bundle\MultiSiteBundle\Site\IdentifierMappingInterface;
 use FH\Bundle\MultiSiteBundle\Site\IdentifiedSiteInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
@@ -22,7 +22,7 @@ final class HostnameIdentifiedUrlGenerator implements UrlGeneratorInterface
     private $identifierMapping;
     private $requestStack;
 
-    public function __construct(UrlGeneratorInterface $urlGenerator, IdentifierMapping $identifierMapping, RequestStack $requestStack)
+    public function __construct(UrlGeneratorInterface $urlGenerator, IdentifierMappingInterface $identifierMapping, RequestStack $requestStack)
     {
         $this->urlGenerator = $urlGenerator;
         $this->identifierMapping = $identifierMapping;

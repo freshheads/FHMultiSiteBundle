@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace FH\Bundle\MultiSiteBundle\Site;
 
-final class IdentifierMapping
+final class IdentifierMapping implements IdentifierMappingInterface
 {
     /**
      * @var IdentifierConfig[]
@@ -39,9 +39,7 @@ final class IdentifierMapping
     }
 
     /**
-     * @param string $identifier
-     * @param string|null $locale
-     * @return string[]
+     * {@inheritDoc}
      */
     public function findHostnamesByIdentifier(string $identifier, string $locale = null): array
     {

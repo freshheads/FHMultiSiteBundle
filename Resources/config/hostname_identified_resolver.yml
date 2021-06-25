@@ -17,3 +17,6 @@ services:
     FH\Bundle\MultiSiteBundle\Site\IdentifierMapping:
         arguments:
             $mapping: '%fh_multi_site.hostname_identified_resolver.identifier_mapping%'
+
+    FH\Bundle\MultiSiteBundle\Site\IdentifierMappingInterface:
+        alias: FH\Bundle\MultiSiteBundle\Site\IdentifierMapping

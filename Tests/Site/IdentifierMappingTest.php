@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace FH\Bundle\MultiSiteBundle\Tests\Site;
 
 use FH\Bundle\MultiSiteBundle\Site\IdentifierMapping;
+use FH\Bundle\MultiSiteBundle\Site\IdentifierMappingInterface;
 use PHPUnit\Framework\TestCase;
 
 final class IdentifierMappingTest extends TestCase
@@ -33,7 +34,7 @@ final class IdentifierMappingTest extends TestCase
     ];
 
     /**
-     * @var IdentifierMapping
+     * @var IdentifierMappingInterface
      */
     private $identifierMapping;
 
