@@ -24,14 +24,14 @@ jobs:
               run: composer update --prefer-dist --no-progress --no-suggest --no-interaction --prefer-lowest
 
             - name: PHPCS Fixer install
-              run: composer update --working-dir=.tools/php-cs-fixer
+              run: composer bin php-cs-fixer update
 
             # Linters
             - name: Run Composer linter
               run: composer validate --strict --no-check-lock
 
             - name: Run lint PHP
-              run: .tools/php-cs-fixer/vendor/bin/php-cs-fixer fix --ansi --verbose --diff --dry-run
+              run: vendor-bin/php-cs-fixer/vendor/friendsofphp/php-cs-fixer/php-cs-fixer fix --ansi --verbose --diff --dry-run
 
              # Tests
             - name: Run PHP unit test suite

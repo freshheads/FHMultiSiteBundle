@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace FH\Bundle\MultiSiteBundle\Router;
@@ -16,7 +17,8 @@ final class HostnameIdentifiedLoader extends Loader
     public const TYPE = 'hostname_identified';
 
     /**
-     * Resource stack to prevent loading loops
+     * Resource stack to prevent loading loops.
+     *
      * @var mixed[]
      */
     private $resourceStack = [];
@@ -39,7 +41,7 @@ final class HostnameIdentifiedLoader extends Loader
 
         array_pop($this->resourceStack);
 
-        if (count($importedCollection) <= 0) {
+        if (\count($importedCollection) <= 0) {
             return $importedCollection;
         }
 
@@ -58,7 +60,7 @@ final class HostnameIdentifiedLoader extends Loader
      */
     public function supports($resource, string $type = null): bool
     {
-        return null === $type && !in_array($resource, $this->resourceStack, true);
+        return null === $type && !\in_array($resource, $this->resourceStack, true);
     }
 
     private function configureRoute(Route $route): Route
@@ -72,7 +74,7 @@ final class HostnameIdentifiedLoader extends Loader
         $locale = $newRoute->hasDefault('_canonical_route') ? $newRoute->getDefault('_locale') : null;
         $hostnames = $this->resolveHostnames($identifiers, $locale);
 
-        if (count($hostnames) === 0) {
+        if (0 === \count($hostnames)) {
             throw new \RuntimeException(sprintf('No hostnames resolved for path "%s" and host identifiers %s', $route->getPath(), implode(', ', $identifiers)));
         }
 
@@ -82,7 +84,7 @@ final class HostnameIdentifiedLoader extends Loader
             ->setHost('{site_hostname}')
             ->setRequirement('site_hostname', $regex);
 
-        if (count($hostnames) === 1) {
+        if (1 === \count($hostnames)) {
             $newRoute->setDefault('site_hostname', reset($hostnames));
         }
 

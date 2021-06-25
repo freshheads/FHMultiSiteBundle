@@ -9,5 +9,4 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
  */
 final class FHMultiSiteBundle extends Bundle
 {
-
 }

@@ -1,16 +1,15 @@
 <?php
+
 declare(strict_types=1);
 
 namespace FH\Bundle\MultiSiteBundle\Router;
 
-use FH\Bundle\MultiSiteBundle\Site\IdentifierMappingInterface;
 use FH\Bundle\MultiSiteBundle\Site\IdentifiedSiteInterface;
+use FH\Bundle\MultiSiteBundle\Site\IdentifierMappingInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Routing\RequestContext;
-use function count;
-use function is_string;
 
 /**
  * @author Joris van de Sande <joris.van.de.sande@freshheads.com>
@@ -39,14 +38,14 @@ final class HostnameIdentifiedUrlGenerator implements UrlGeneratorInterface
         return $this->requestContext;
     }
 
-    public function generate($name, $parameters = array(), $referenceType = self::ABSOLUTE_PATH): string
+    public function generate($name, $parameters = [], $referenceType = self::ABSOLUTE_PATH): string
     {
         $identifier = $this->resolveIdentifier($parameters);
 
         if (isset($identifier)) {
             $hostnames = $this->identifierMapping->findHostnamesByIdentifier($identifier);
 
-            if (count($hostnames) > 0) {
+            if (\count($hostnames) > 0) {
                 $parameters['site_hostname'] = $hostnames[0];
             }
 
@@ -66,7 +65,7 @@ final class HostnameIdentifiedUrlGenerator implements UrlGeneratorInterface
                 return $site->getIdentifier();
             }
 
-            if (is_string($parameters['site'])) {
+            if (\is_string($parameters['site'])) {
                 return $parameters['site'];
             }
         }

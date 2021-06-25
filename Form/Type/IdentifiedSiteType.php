@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace FH\Bundle\MultiSiteBundle\Form\Type;
@@ -28,13 +29,13 @@ final class IdentifiedSiteType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'exclude_sites' => []
+            'exclude_sites' => [],
         ]);
 
         $resolver->setNormalizer('choices', function (Options $options, $value) {
             if ($options['exclude_sites']) {
                 $value = array_filter($value, function (IdentifiedSiteInterface $site) use ($options): bool {
-                    return !in_array($site->getIdentifier(), $options['exclude_sites'], true);
+                    return !\in_array($site->getIdentifier(), $options['exclude_sites'], true);
                 });
             }
 

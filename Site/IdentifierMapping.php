@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace FH\Bundle\MultiSiteBundle\Site;
@@ -16,9 +17,9 @@ final class IdentifierMapping implements IdentifierMappingInterface
      * [
      *     'identifier' => [ 'hostnames' => [], 'locales' => [] ]
      * ]
-     * </code>
+     * </code>.
      *
-     * @param array $mapping mapping from identifier to matching request part.
+     * @param array $mapping mapping from identifier to matching request part
      */
     public function __construct(array $mapping)
     {
@@ -30,7 +31,7 @@ final class IdentifierMapping implements IdentifierMappingInterface
     public function findIdentifierByHostname(string $hostname): ?string
     {
         foreach ($this->mapping as $identifier => $config) {
-            if (in_array($hostname, $config->getHostnames(), true)) {
+            if (\in_array($hostname, $config->getHostnames(), true)) {
                 return $identifier;
             }
         }
@@ -49,10 +50,10 @@ final class IdentifierMapping implements IdentifierMappingInterface
 
         $config = $this->mapping[$identifier];
 
-        if (!is_string($locale)) {
+        if (!\is_string($locale)) {
             return $config->getHostnames();
         }
 
-        return in_array($locale, $config->getLocales(), true) ? $config->getHostnames() : [];
+        return \in_array($locale, $config->getLocales(), true) ? $config->getHostnames() : [];
     }
 }
