@@ -25,7 +25,7 @@
         }
     ],
     "require": {
-        "php": ">=7.2",
+        "php": ">=7.3",
         "symfony/config": "^4.4 | ^5.0",
         "symfony/dependency-injection": "^4.4 | ^5.0",
         "symfony/event-dispatcher": "^4.4 | ^5.0",
