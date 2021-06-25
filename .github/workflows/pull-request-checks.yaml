@@ -23,3 +23,7 @@ jobs:
       # Linters
       - name: Run Composer linter
         run: composer validate --strict --no-check-lock
+
+      # Tests
+      - name: Run PHP unit test suite
+        run: vendor/bin/phpunit -v -c .

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:noNamespaceSchemaLocation="http://schema.phpunit.de/8.5/phpunit.xsd"
+         xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.3/phpunit.xsd"
          backupGlobals="false"
          colors="true"
          bootstrap="vendor/autoload.php"
@@ -9,8 +9,9 @@
          failOnWarning="true"
 >
     <php>
-        <ini name="error_reporting" value="-1" />
-        <env name="SYMFONY_PHPUNIT_VERSION" value="8.5" />
+        <ini name="error_reporting" value="-1"/>
+        <ini name="memory_limit" value="-1" />
+        <env name="SYMFONY_PHPUNIT_VERSION" value="9.5"/>
     </php>
 
     <testsuites>
@@ -19,16 +20,16 @@
         </testsuite>
     </testsuites>
 
-    <filter>
-        <whitelist>
+    <coverage>
+        <include>
             <directory>./</directory>
-            <exclude>
-                <directory>./Resources</directory>
-                <directory>./Tests</directory>
-                <directory>./vendor</directory>
-            </exclude>
-        </whitelist>
-    </filter>
+        </include>
+        <exclude>
+            <directory>./Resources</directory>
+            <directory>./Tests</directory>
+            <directory>./vendor</directory>
+        </exclude>
+    </coverage>
 
     <listeners>
         <listener class="Symfony\Bridge\PhpUnit\SymfonyTestsListener"/>
