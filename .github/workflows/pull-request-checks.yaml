@@ -3,27 +3,30 @@ name: Pull request checks
 on: [ pull_request ]
 
 jobs:
-  tests:
-    runs-on: ubuntu-latest
-    steps:
-      # Runner information
-      - name: Echo PHP version
-        run: php -v
+    tests:
+        runs-on: ubuntu-latest
+        strategy:
+            matrix:
+                php: ['7.3', '7.4']
+        steps:
+            # Checkout & installation
+            - name: Checkout repository
+              uses: actions/checkout@v2
 
-      - name: Echo Composer version
-        run: composer --version
+            - name: Setup PHP
+              uses: shivammathur/setup-php@v2
+              with:
+                coverage: "none"
+                ini-values: "memory_limit=-1"
+                php-version: "${{ matrix.php }}"
 
-      # Checkout & installation
-      - name: Checkout repository
-        uses: actions/checkout@v2
+            - name: Composer install
+              run: composer update --prefer-dist --no-progress --no-suggest --no-interaction --prefer-lowest
 
-      - name: Composer install
-        run: composer update --prefer-dist --no-progress --no-suggest --no-interaction --prefer-stable
+            # Linters
+            - name: Run Composer linter
+              run: composer validate --strict --no-check-lock
 
-      # Linters
-      - name: Run Composer linter
-        run: composer validate --strict --no-check-lock
-
-      # Tests
-      - name: Run PHP unit test suite
-        run: vendor/bin/phpunit -v -c .
+             # Tests
+            - name: Run PHP unit test suite
+              run: vendor/bin/phpunit -v -c .
