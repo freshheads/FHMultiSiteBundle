@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace FH\Bundle\MultiSiteBundle\Tests\Site;
@@ -13,24 +14,24 @@ final class IdentifierMappingTest extends TestCase
         'amsterdam' => [
             'hostnames' => [
                 'amsterdam.local',
-                'amsterdam.nl'
+                'amsterdam.nl',
             ],
-            'locales' => ['nl', 'en']
+            'locales' => ['nl', 'en'],
         ],
         'tilburg' => [
             'hostnames' => [
                 'tilburg.local',
-                'tilburg.nl'
+                'tilburg.nl',
             ],
-            'locales' => ['nl']
+            'locales' => ['nl'],
         ],
         'den-bosch' => [
             'hostnames' => [
                 'den-bosch.local',
-                'den-bosch.nl'
+                'den-bosch.nl',
             ],
-            'locales' => []
-        ]
+            'locales' => [],
+        ],
     ];
 
     /**
@@ -45,14 +46,12 @@ final class IdentifierMappingTest extends TestCase
 
     /**
      * @dataProvider identifierMappingData
-     * @param string $hostname
-     * @param string|null $expectedIdentifier
      */
     public function testFindIdentifierByHostnameReturnsCorrectIdentifier(string $hostname, string $expectedIdentifier = null): void
     {
         $identifier = $this->identifierMapping->findIdentifierByHostname($hostname);
 
-        $this->assertEquals($expectedIdentifier, $identifier);
+        $this->assertSame($expectedIdentifier, $identifier);
     }
 
     public function testFindIdentifierByHostnameReturnsNullWhenNoIdentifierMatches(): void
@@ -63,17 +62,17 @@ final class IdentifierMappingTest extends TestCase
     public function testFindHostnamesByIdentifierWithoutLocaleReturnsCorrectHostnames(): void
     {
         foreach (self::MAPPING as $identifier => $item) {
-            $this->assertEquals($item['hostnames'], $this->identifierMapping->findHostnamesByIdentifier($identifier));
+            $this->assertSame($item['hostnames'], $this->identifierMapping->findHostnamesByIdentifier($identifier));
         }
     }
 
     public function testFindHostnamesByIdentifierWithLocaleReturnsCorrectHostnames(): void
     {
         $hostnames = $this->identifierMapping->findHostnamesByIdentifier('amsterdam', 'nl');
-        $this->assertEquals(self::MAPPING['amsterdam']['hostnames'], $hostnames);
+        $this->assertSame(self::MAPPING['amsterdam']['hostnames'], $hostnames);
 
         $hostnames = $this->identifierMapping->findHostnamesByIdentifier('amsterdam', 'en');
-        $this->assertEquals(self::MAPPING['amsterdam']['hostnames'], $hostnames);
+        $this->assertSame(self::MAPPING['amsterdam']['hostnames'], $hostnames);
 
         $hostnames = $this->identifierMapping->findHostnamesByIdentifier('tilburg', 'en');
         $this->assertEmpty($hostnames);
@@ -94,7 +93,7 @@ final class IdentifierMappingTest extends TestCase
             ['amsterdam.local', 'amsterdam'],
             ['amsterdam.nl', 'amsterdam'],
             ['tilburg.local', 'tilburg'],
-            ['tilburg.nl', 'tilburg']
+            ['tilburg.nl', 'tilburg'],
         ];
     }
 }

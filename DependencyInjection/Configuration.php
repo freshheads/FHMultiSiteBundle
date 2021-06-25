@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace FH\Bundle\MultiSiteBundle\DependencyInjection;
@@ -33,7 +34,8 @@ class Configuration implements ConfigurationInterface
                             if (!$config['enabled']) {
                                 return false;
                             }
-                            return $config['type'] === 'hostname_identified' && !isset($config['host_mapping']);
+
+                            return 'hostname_identified' === $config['type'] && !isset($config['host_mapping']);
                         })
                         ->thenInvalid('A "host_mapping" is required for the hostname_identified resolver')
                     ->end()
@@ -43,7 +45,7 @@ class Configuration implements ConfigurationInterface
                                 return false;
                             }
 
-                            return $config['type'] === 'prefixed_path_identified' && !isset($config['identifiers']);
+                            return 'prefixed_path_identified' === $config['type'] && !isset($config['identifiers']);
                         })
                         ->thenInvalid('"identifiers" are required for the prefixed_path_identified resolver')
                     ->end()
@@ -53,7 +55,7 @@ class Configuration implements ConfigurationInterface
                                 return false;
                             }
 
-                            return $config['type'] === 'service' && !isset($config['service_id']);
+                            return 'service' === $config['type'] && !isset($config['service_id']);
                         })
                             ->thenInvalid('A "service_id" is required for the service resolver')
                     ->end()
@@ -63,7 +65,7 @@ class Configuration implements ConfigurationInterface
                             ->defaultValue('hostname_identified')
                             ->beforeNormalization()
                                 ->ifNotInArray(self::ALLOWED_RESOLVERS)
-                                    ->thenInvalid('Resolver type must be one of: ' . implode(', ', self::ALLOWED_RESOLVERS))
+                                    ->thenInvalid('Resolver type must be one of: '.implode(', ', self::ALLOWED_RESOLVERS))
                             ->end()
                         ->end()
                         ->scalarNode('service_id')->end()

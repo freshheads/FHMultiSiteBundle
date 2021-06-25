@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace FH\Bundle\MultiSiteBundle\Router;
@@ -34,14 +35,14 @@ final class PathIdentifiedUrlGenerator implements UrlGeneratorInterface
         return $this->requestContext;
     }
 
-    public function generate($name, $parameters = array(), $referenceType = self::ABSOLUTE_PATH): string
+    public function generate($name, $parameters = [], $referenceType = self::ABSOLUTE_PATH): string
     {
         if (isset($parameters['site'])) {
             if ($parameters['site'] instanceof IdentifiedSiteInterface) {
                 /** @var IdentifiedSiteInterface $site */
                 $site = $parameters['site'];
                 $identifier = $site->getIdentifier();
-            } elseif (is_string($parameters['site'])) {
+            } elseif (\is_string($parameters['site'])) {
                 $identifier = $parameters['site'];
             }
         }

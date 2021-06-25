@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace FH\Bundle\MultiSiteBundle\Site;
@@ -26,7 +27,7 @@ final class HostnameIdentifiedSiteResolver implements SiteResolverInterface
     {
         $identifier = $this->identifierMapping->findIdentifierByHostname($requestContext->getHost());
 
-        if ($identifier === null) {
+        if (null === $identifier) {
             throw SiteNotFoundException::withRequestContext($requestContext);
         }
 

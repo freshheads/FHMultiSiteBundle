@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace FH\Bundle\MultiSiteBundle\Site;
@@ -11,9 +12,6 @@ use Symfony\Component\Routing\RequestContext;
 interface SiteResolverInterface
 {
     /**
-     * @param RequestContext $requestContext
-     * @return SiteInterface
-     *
      * @throws SiteNotFoundException
      */
     public function resolve(RequestContext $requestContext): SiteInterface;

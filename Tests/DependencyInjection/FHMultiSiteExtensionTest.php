@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace FH\Bundle\MultiSiteBundle\Tests\DependencyInjection;
@@ -21,13 +22,13 @@ final class FHMultiSiteExtensionTest extends TestCase
      */
     private $extension;
 
-    public function setUp(): void
+    protected function setUp(): void
     {
         $this->container = new ContainerBuilder();
         $this->extension = new FHMultiSiteExtension();
     }
 
-    public function tearDown(): void
+    protected function tearDown(): void
     {
         unset($this->container, $this->extension);
     }
@@ -45,13 +46,13 @@ final class FHMultiSiteExtensionTest extends TestCase
         $this->extension->load(
             [
                 'fh_multi_site' => [
-                    'repository' => 'My\\Custom\\SiteRepository'
-                ]
+                    'repository' => 'My\\Custom\\SiteRepository',
+                ],
             ],
             $this->container
         );
 
         $this->assertTrue($this->container->hasAlias(SiteRepositoryInterface::class));
-        $this->assertEquals('My\\Custom\\SiteRepository', (string) $this->container->getAlias(SiteRepositoryInterface::class));
+        $this->assertSame('My\\Custom\\SiteRepository', (string) $this->container->getAlias(SiteRepositoryInterface::class));
     }
 }

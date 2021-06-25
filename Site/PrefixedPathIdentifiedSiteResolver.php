@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace FH\Bundle\MultiSiteBundle\Site;
@@ -15,9 +16,8 @@ final class PrefixedPathIdentifiedSiteResolver implements SiteResolverInterface
     private $identifiers;
 
     /**
-     * @param SiteRepositoryInterface $siteRepository
      * @param string[] $identifiers
-     * @param string $defaultIdentifier
+     * @param string   $defaultIdentifier
      */
     public function __construct(SiteRepositoryInterface $siteRepository, array $identifiers, string $defaultIdentifier = null)
     {
