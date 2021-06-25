@@ -20,17 +20,6 @@
         </testsuite>
     </testsuites>
 
-    <coverage>
-        <include>
-            <directory>./</directory>
-        </include>
-        <exclude>
-            <directory>./Resources</directory>
-            <directory>./Tests</directory>
-            <directory>./vendor</directory>
-        </exclude>
-    </coverage>
-
     <listeners>
         <listener class="Symfony\Bridge\PhpUnit\SymfonyTestsListener"/>
     </listeners>
