@@ -5,7 +5,13 @@ namespace FH\Bundle\MultiSiteBundle\Site;
 
 final class IdentifierConfig
 {
+    /**
+     * @var array
+     */
     private $hostnames;
+    /**
+     * @var array
+     */
     private $locales;
 
     public function __construct(array $hostnames, array $locales)

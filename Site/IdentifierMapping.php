@@ -53,6 +53,6 @@ final class IdentifierMapping implements IdentifierMappingInterface
             return $config->getHostnames();
         }
 
-        return in_array($locale, $config->getLocales()) ? $config->getHostnames() : [];
+        return in_array($locale, $config->getLocales(), true) ? $config->getHostnames() : [];
     }
 }

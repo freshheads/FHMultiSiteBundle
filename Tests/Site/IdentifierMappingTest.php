@@ -38,7 +38,7 @@ final class IdentifierMappingTest extends TestCase
      */
     private $identifierMapping;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->identifierMapping = new IdentifierMapping(self::MAPPING);
     }

@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace FH\Bundle\MultiSiteBundle\Twig;
 
 use FH\Bundle\MultiSiteBundle\Site\SiteInterface;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
@@ -29,6 +30,12 @@ final class CurrentSiteExtension extends AbstractExtension
 
     public function getCurrentSite(): ?SiteInterface
     {
-        return $this->requestStack->getMasterRequest()->get('site');
+        $request = $this->requestStack->getMasterRequest();
+
+        if (!$request instanceof Request) {
+            return null;
+        }
+
+        return $request->get('site');
     }
 }

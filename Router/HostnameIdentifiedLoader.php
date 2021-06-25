@@ -17,7 +17,7 @@ final class HostnameIdentifiedLoader extends Loader
 
     /**
      * Resource stack to prevent loading loops
-     * @var string[]
+     * @var mixed[]
      */
     private $resourceStack = [];
 
@@ -28,7 +28,10 @@ final class HostnameIdentifiedLoader extends Loader
         $this->identifierMapping = $identifierMapping;
     }
 
-    public function load($resource, $type = null): RouteCollection
+    /**
+     * @param mixed $resource
+     */
+    public function load($resource, string $type = null): RouteCollection
     {
         $this->resourceStack[] = $resource;
 
@@ -50,9 +53,12 @@ final class HostnameIdentifiedLoader extends Loader
         return $collection;
     }
 
-    public function supports($resource, $type = null): bool
+    /**
+     * @param mixed $resource
+     */
+    public function supports($resource, string $type = null): bool
     {
-        return null === $type && !in_array($resource, $this->resourceStack);
+        return null === $type && !in_array($resource, $this->resourceStack, true);
     }
 
     private function configureRoute(Route $route): Route
