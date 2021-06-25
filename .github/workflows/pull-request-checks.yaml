@@ -1,0 +1,25 @@
+name: Pull request checks
+
+on: [ pull_request ]
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+      # Runner information
+      - name: Echo PHP version
+        run: php -v
+
+      - name: Echo Composer version
+        run: composer --version
+
+      # Checkout & installation
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Composer install
+        run: composer update --prefer-dist --no-progress --no-suggest --no-interaction --prefer-stable
+
+      # Linters
+      - name: Run Composer linter
+        run: composer validate --strict --no-check-lock
