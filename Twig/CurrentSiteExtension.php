@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace FH\Bundle\MultiSiteBundle\Twig;
@@ -24,7 +25,7 @@ final class CurrentSiteExtension extends AbstractExtension
     public function getFunctions(): array
     {
         return [
-            new TwigFunction('current_site', [$this, 'getCurrentSite'])
+            new TwigFunction('current_site', [$this, 'getCurrentSite']),
         ];
     }
 

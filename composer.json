@@ -34,6 +34,7 @@
         "symfony/yaml": "^4.4 | ^5.0"
     },
     "require-dev": {
+        "bamarni/composer-bin-plugin": "^1.8",
         "phpunit/phpunit": "^8.5 | ^9.0",
         "symfony/doctrine-bridge": "^4.4 | ^5.0",
         "symfony/form": "^4.4 | ^5.0",
@@ -54,6 +55,9 @@
         }
     },
     "config": {
-        "sort-packages": true
+        "sort-packages": true,
+        "allow-plugins": {
+            "bamarni/composer-bin-plugin": true
+        }
     }
 }

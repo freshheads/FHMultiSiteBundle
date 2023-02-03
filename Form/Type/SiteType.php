@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace FH\Bundle\MultiSiteBundle\Form\Type;
@@ -28,7 +29,7 @@ final class SiteType extends AbstractType
             'choice_label' => static function (SiteInterface $site = null) {
                 return (string) $site;
             },
-            'choice_value' => 'id'
+            'choice_value' => 'id',
         ]);
     }
 

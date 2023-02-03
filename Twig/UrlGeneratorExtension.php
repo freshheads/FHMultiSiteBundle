@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace FH\Bundle\MultiSiteBundle\Twig;
@@ -26,7 +27,7 @@ final class UrlGeneratorExtension extends AbstractExtension
     {
         return [
             new TwigFunction('site_path', [$this, 'generateSitePath']),
-            new TwigFunction('site_url', [$this, 'generateSiteUrl'])
+            new TwigFunction('site_url', [$this, 'generateSiteUrl']),
         ];
     }
 
