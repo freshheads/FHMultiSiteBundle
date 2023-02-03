@@ -31,7 +31,7 @@ final class CurrentSiteExtension extends AbstractExtension
 
     public function getCurrentSite(): ?SiteInterface
     {
-        $request = $this->requestStack->getMasterRequest();
+        $request = method_exists($this->requestStack, 'getMainRequest') ? $this->requestStack->getMainRequest() : $this->requestStack->getMasterRequest();
 
         if (!$request instanceof Request) {
             return null;

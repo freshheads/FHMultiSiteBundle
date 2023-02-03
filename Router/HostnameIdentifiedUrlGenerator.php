@@ -70,10 +70,10 @@ final class HostnameIdentifiedUrlGenerator implements UrlGeneratorInterface
             }
         }
 
-        $masterRequest = $this->requestStack->getMasterRequest();
+        $request = method_exists($this->requestStack, 'getMainRequest') ? $this->requestStack->getMainRequest() : $this->requestStack->getMasterRequest();
 
-        if ($masterRequest instanceof Request) {
-            $site = $masterRequest->attributes->get('site');
+        if ($request instanceof Request) {
+            $site = $request->attributes->get('site');
 
             if ($site instanceof IdentifiedSiteInterface) {
                 return $site->getIdentifier();
