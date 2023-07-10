@@ -33,9 +33,9 @@ final class HostnameIdentifiedUrlGenerator implements UrlGeneratorInterface
         $this->requestContext = $context;
     }
 
-    public function getContext(): ?RequestContext
+    public function getContext(): RequestContext
     {
-        return $this->requestContext;
+        return $this->requestContext ?? new RequestContext();
     }
 
     public function generate($name, $parameters = [], $referenceType = self::ABSOLUTE_PATH): string
