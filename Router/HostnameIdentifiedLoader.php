@@ -30,9 +30,6 @@ final class HostnameIdentifiedLoader extends Loader
         $this->identifierMapping = $identifierMapping;
     }
 
-    /**
-     * @param mixed $resource
-     */
     public function load($resource, string $type = null): RouteCollection
     {
         $this->resourceStack[] = $resource;
@@ -55,9 +52,6 @@ final class HostnameIdentifiedLoader extends Loader
         return $collection;
     }
 
-    /**
-     * @param mixed $resource
-     */
     public function supports($resource, string $type = null): bool
     {
         return null === $type && !\in_array($resource, $this->resourceStack, true);

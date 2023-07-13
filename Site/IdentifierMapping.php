@@ -39,9 +39,6 @@ final class IdentifierMapping implements IdentifierMappingInterface
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     public function findHostnamesByIdentifier(string $identifier, string $locale = null): array
     {
         if (!isset($this->mapping[$identifier])) {
